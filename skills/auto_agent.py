@@ -19,6 +19,7 @@ AutoMemoryAgent: 自动对话记忆智能体
 import json
 import os
 import sys
+import subprocess
 import time
 from collections import Counter
 from typing import Optional
@@ -292,6 +293,26 @@ def interactive_demo():
             print(f"         对话轮次: {s['total_turns']}, "
                   f"检索延迟: {s.get('avg_search_latency_ms', 'N/A')}ms")
             continue
+
+        if user_input == "/grag_show":
+            print("  [启动] 正在启动GRAG Memory Graph可视化前端...")
+            s = agent.get_stats()
+            storage = agent.memory.storage_path
+            try:
+                # 用子进程启动webui，不阻塞当前会话
+                webui_path = os.path.join(os.path.dirname(__file__), "webui.py")
+                proc = subprocess.Popen(
+                    [sys.executable, webui_path, "--storage", storage],
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if hasattr(subprocess, 'CREATE_NEW_PROCESS_GROUP') else 0
+                )
+                print(f"  ✅ 可视化前端已启动 → http://localhost:5000")
+                print(f"     (记忆图: {s['total_memories']}节点, {s['edges']}边)")
+                print(f"     截图后按 Ctrl+C 停止服务器")
+                continue
+            except Exception as e:
+                print(f"  ❌ 启动失败: {e}")
+                continue
 
         result = agent.respond(user_input)
         stats = result["graph_stats"]
