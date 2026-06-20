@@ -2,6 +2,8 @@
 
 基于图检索增强生成（GRAG）的智能体记忆系统，可作为 Claude Code Skill 使用。
 
+**GitHub**: [https://github.com/DReamLS/GMem-skills](https://github.com/DReamLS/GMem-skills)
+
 ## 快速开始
 
 ```bash
