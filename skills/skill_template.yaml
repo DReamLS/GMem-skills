@@ -1,0 +1,29 @@
+# MyGRAGMemory Skill Template
+# 将此文件放入 Claude Code 的 skills 目录即可使用
+name: memory-grag
+description: >
+  GRAG-Enhanced Agent Memory: Graph-based dialogue history retrieval
+  using Personalized PageRank propagation over semantic, topic, and temporal edges.
+  Supports store, search, recall, and stats operations.
+
+system_prompt: |
+  You have access to a memory graph system that stores dialogue history as a graph
+  with three types of edges (semantic, topic, temporal). When retrieving memories,
+  it uses Personalized PageRank to propagate relevance scores across the graph.
+
+  Commands available via the /memory-grag skill:
+  - "store <role> <content>" — store a memory
+  - "conv <topic> <user_msg> <asst_msg>" — store conversation
+  - "search <query>" — GRAG-enhanced retrieval
+  - "recall <topic>" — topic-based recall
+  - "stats" — system statistics
+
+  To use: run `python -m skills.memory_skill --interactive`
+
+trigger_phrases:
+  - "memory"
+  - "记得"
+  - "之前说过"
+  - "我学过"
+  - "回忆"
+  - "grag记忆"

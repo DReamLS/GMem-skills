@@ -1,0 +1,159 @@
+{
+  "graph_stats": {
+    "total_memories": 34,
+    "topics": [
+      "database",
+      "deep-learning",
+      "nlp",
+      "python",
+      "rag"
+    ],
+    "num_topics": 5,
+    "edges": 293,
+    "avg_degree": 17.24,
+    "density": 52.23,
+    "roles": {
+      "user": 17,
+      "assistant": 17
+    },
+    "storage_path": "results/experiment_memories.json"
+  },
+  "vector_vs_grag": [
+    {
+      "query": "RAG检索增强技术",
+      "expected_topic": "rag",
+      "vector_match": 2,
+      "grag_match": 5,
+      "improvement": 3
+    },
+    {
+      "query": "Python并发编程",
+      "expected_topic": "python",
+      "vector_match": 0,
+      "grag_match": 0,
+      "improvement": 0
+    },
+    {
+      "query": "深度学习模型训练",
+      "expected_topic": "deep-learning",
+      "vector_match": 0,
+      "grag_match": 0,
+      "improvement": 0
+    },
+    {
+      "query": "数据库性能优化",
+      "expected_topic": "database",
+      "vector_match": 0,
+      "grag_match": 0,
+      "improvement": 0
+    },
+    {
+      "query": "NLP嵌入表示学习",
+      "expected_topic": "nlp",
+      "vector_match": 3,
+      "grag_match": 0,
+      "improvement": -3
+    }
+  ],
+  "cross_topic": [
+    {
+      "query": "如何在Python中实现深度学习模型？",
+      "expected_topics": [
+        "python",
+        "deep-learning"
+      ],
+      "topics_found": [
+        "rag"
+      ],
+      "covered": 0,
+      "multi_topic": false
+    },
+    {
+      "query": "向量数据库如何加速RAG检索？",
+      "expected_topics": [
+        "database",
+        "rag"
+      ],
+      "topics_found": [
+        "rag"
+      ],
+      "covered": 1,
+      "multi_topic": false
+    },
+    {
+      "query": "NLP中的词嵌入与深度学习的关系",
+      "expected_topics": [
+        "nlp",
+        "deep-learning"
+      ],
+      "topics_found": [
+        "rag"
+      ],
+      "covered": 0,
+      "multi_topic": false
+    },
+    {
+      "query": "数据库索引和FAISS索引的异同",
+      "expected_topics": [
+        "database",
+        "rag"
+      ],
+      "topics_found": [
+        "rag"
+      ],
+      "covered": 1,
+      "multi_topic": false
+    },
+    {
+      "query": "如何评估NLP模型的性能？",
+      "expected_topics": [
+        "nlp",
+        "rag"
+      ],
+      "topics_found": [
+        "rag"
+      ],
+      "covered": 1,
+      "multi_topic": false
+    }
+  ],
+  "graph_analysis": {
+    "graph_density": 52.23,
+    "avg_degree": 17.24,
+    "max_degree": 33,
+    "min_degree": 11,
+    "hub_count": 8
+  },
+  "ppr_convergence": {
+    "avg_iters": 6.0,
+    "min_iters": 6,
+    "max_iters": 6,
+    "latency_ms": 0.9
+  },
+  "edge_cases": [
+    {
+      "test": "empty_graph",
+      "passed": true,
+      "detail": "result=[]"
+    },
+    {
+      "test": "similar_content",
+      "passed": false,
+      "detail": "top_score=0.4000"
+    },
+    {
+      "test": "incremental_store",
+      "passed": true,
+      "detail": "36->37"
+    },
+    {
+      "test": "topic_recall",
+      "passed": true,
+      "detail": "recalled 5 items"
+    },
+    {
+      "test": "edge_symmetry",
+      "passed": true
+    }
+  ]
+}

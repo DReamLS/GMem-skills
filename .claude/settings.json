@@ -1,0 +1,15 @@
+{
+  "skills": [
+    {
+      "name": "memory-grag",
+      "description": "GRAG-Enhanced Agent Memory System. Stores/retrieves dialogue history using graph-based retrieval.",
+      "type": "local",
+      "path": ".claude/skills/memory-grag.yaml",
+      "commands": {
+        "run": "python -m skills.memory_skill --interactive",
+        "query": "python -m skills.memory_skill --cmd \"q ${query}\"",
+        "store": "python -m skills.memory_skill --cmd \"s ${role} ${content}\""
+      }
+    }
+  ]
+}
